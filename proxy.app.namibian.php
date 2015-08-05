@@ -27,8 +27,7 @@
   $url     = str_replace("___","&",$url_);
   $url     = "http://www.namibian.com.na/" . $url;
   $siteurl = "http://www.namibian.com.na/";
-  $html    = file_get_html("$url");
-  
+
   switch ($view){
 	  case 'articles-list':	
 	        $arr_search = array('.','?','&','=');
@@ -57,6 +56,8 @@
 				}
 			}
 			
+                        /* read server */
+                        $html    = file_get_html("$url");
 			$arr = array();
 			$arr['articles'] = array();
 			
