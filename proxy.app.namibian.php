@@ -10,6 +10,9 @@
   * To reduce bandwidth consumption on the newspaper, we serve a cached copy & 
   * only reparse the website after a few hours
   *
+  * idx -- index of current story. I was using $index of AngularJS but it does not 
+  *        point to a valid story index when you run a filter on a list
+  *
   * Written by William Sengdara
   * July 26, 2015
   */
@@ -60,6 +63,7 @@
                         $html    = file_get_html("$url");
 			$arr = array();
 			$arr['articles'] = array();
+			$idx = 0;
 			
 			// container: current_story_content
 			// heading: story_heading4
@@ -177,9 +181,11 @@
 											  "body"=>$body,
 											  "imagetitle"=>$imagetitle,
 											  "fullstory"=>$fullstory,
-											  "url"=>$url]
+											  "url"=>$url,
+											  "index"=>$idx]
 								];
-					 
+					$idx++;
+					
 					$arr["articles"][] = $article;
 			}			
 			
